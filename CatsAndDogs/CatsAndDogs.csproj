@@ -50,10 +50,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\Repository\" />
-      <Folder Include="Data\DTOs\" />
-      <Folder Include="Data\Service\" />
-      <Folder Include="Data\ViewModels\" />
+      <None Update="Data\DataStorage\Form.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

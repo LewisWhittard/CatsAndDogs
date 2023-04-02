@@ -1,0 +1,49 @@
+﻿@using CatsAndDogs.Data.ViewModels;
+@page "/Form"
+@using CatsAndDogs.Data.Service;
+@using CatsAndDogs.Data.DTOs;
+
+
+<h3>Form</h3>
+
+<EditForm Model="@ViewModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label for="ID">ID:</label>
+    <InputNumber id="Id" @bind-Value="ViewModel.Id" disabled />
+    <br>
+    <label for="Name">Forename:</label>
+    <InputText id="Forename" @bind-Value="ViewModel.Forename" />
+    <br>
+    <br>
+    <label for="Name">Surname:</label>
+    <InputText id="Surname" @bind-Value="ViewModel.Surname" />
+    <br>
+    <br>
+    <label for="Status">Cat or Dog:</label>
+    <InputSelect id="COD" @bind-Value="ViewModel.COD" >
+    {
+        <option value="0">Cat</option>
+        <option value="1">Dog</option>
+        }
+    </InputSelect>
+    <br>
+    <label for="Name">Deleted:</label>
+    <InputCheckbox id="Deleted" @bind-Value="ViewModel.Deleted" disabled />
+    <button type="submit">Save</button>
+</EditForm>
+
+
+@code {
+
+    private FormViewModel ViewModel = new();
+    
+    private void HandleValidSubmit()
+    {
+        var FS = new FormService();
+        var Data = new FormDTO(ViewModel);
+        FS.SaveNewForm(Data);
+    }
+
+}
