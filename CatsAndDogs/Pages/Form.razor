@@ -2,6 +2,7 @@
 @page "/Form"
 @using CatsAndDogs.Data.Service;
 @using CatsAndDogs.Data.DTOs;
+@inject NavigationManager NavManager;
 
 
 <h3>Form</h3>
@@ -50,6 +51,8 @@
         var FS = new FormService();
         var Data = new FormDTO(ViewModel);
         FS.SaveNewForm(Data);
+        NavManager.NavigateTo("/Table-Customer", forceLoad: true);
+
     }
 
 }
