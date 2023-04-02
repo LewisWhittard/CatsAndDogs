@@ -34,7 +34,15 @@ namespace CatsAndDogs.Data.Service
 
 		public List<FormViewModel> GetAllDataToDisplay()
 		{
-			return null;
+            var data = Import();
+			List<FormViewModel> toReturn = new List<FormViewModel>();
+			foreach (var item in data)
+			{
+				FormViewModel newRow = new FormViewModel(item);
+				toReturn.Add(newRow);
+
+			}
+            return toReturn;
 		}
 
 	}

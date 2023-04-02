@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CatsAndDogs.Data.DTOs;
 using CatsAndDogs.Data.Enum;
 
 namespace CatsAndDogs.Data.ViewModels
@@ -18,7 +19,7 @@ namespace CatsAndDogs.Data.ViewModels
         public string Surname { get; set; }
         [Required]
         public CatOrDog COD { get; set; }
-        public bool Deleted { get; set; } = true;
+        public bool Deleted { get; set; } = false;
 
         public FormViewModel()
         {
@@ -34,6 +35,15 @@ namespace CatsAndDogs.Data.ViewModels
             Surname = surname;
             COD = cOD;
             Deleted = deleted;
+        }
+
+        public FormViewModel(FormDTO data)
+        {
+            Id = data.Id;
+            Forename = data.Forename;
+            Surname = data.Surname;
+            COD = data.COD;
+            Deleted = data.Deleted;
         }
     }
 
