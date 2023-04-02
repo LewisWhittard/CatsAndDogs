@@ -1,0 +1,40 @@
+﻿@using MudBlazor;
+@using MudBlazor.Charts.SVG;
+@using CatsAndDogs.Data.Service;
+@page "/FormCharts"
+
+<h3>Form Charts</h3>
+
+<MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Pie" InputData="ConstructPieChart()" @bind-SelectedIndex="Index" Width="25%" Height="25%" />
+</MudPaper>
+
+<td style="color:#1de9b6">Cat</td>
+<td style="color:#2979ff">Dog</td>
+
+
+@code {
+    private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
+
+
+
+    private void ConstructBarChart()
+    {
+
+    }
+
+    private double[] ConstructPieChart()
+    {
+        FormService FS = new FormService();
+
+        List<double> toReturn = new List<double>();
+
+        var DogCount = Convert.ToDouble(FS.GetDogCount());
+        toReturn.Add(DogCount);
+        var CatCount = Convert.ToDouble(FS.GetCatCount());
+        toReturn.Add(CatCount);
+
+        return toReturn.ToArray();
+    }
+
+}

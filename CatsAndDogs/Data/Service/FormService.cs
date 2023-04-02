@@ -45,5 +45,18 @@ namespace CatsAndDogs.Data.Service
             return toReturn;
 		}
 
-	}
+		public int GetDogCount()
+		{
+			var data = Import();
+			var toReturn = Import().Where(x => x.COD == Enum.CatOrDog.Dog && x.Deleted == false).ToList().Count;
+			return toReturn;
+		}
+
+        public int GetCatCount()
+        {
+            var data = Import();
+            var toReturn = Import().Where(x => x.COD == Enum.CatOrDog.Cat && x.Deleted == false).ToList().Count;
+            return toReturn;
+        }
+    }
 }
