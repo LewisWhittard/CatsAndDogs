@@ -38,7 +38,13 @@
 @code {
 
     private FormViewModel ViewModel = new();
-    
+
+    protected override async Task OnInitializedAsync()
+    {
+        var FS = new FormService();
+        ViewModel.Id = FS.GetNextId();
+    }
+
     private void HandleValidSubmit()
     {
         var FS = new FormService();

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Google.Crypto.Tink.Signature;
 
 namespace CatsAndDogs.Data.Service
 {
@@ -29,7 +28,7 @@ namespace CatsAndDogs.Data.Service
 		public int GetNextId()
 		{
 			var LastId = GetlastId();
-			var toReturn = LastId++;
+			var toReturn = LastId + 1;
 			return toReturn;
 		}
 
