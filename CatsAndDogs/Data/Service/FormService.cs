@@ -19,10 +19,17 @@ namespace CatsAndDogs.Data.Service
 
 		public int GetlastId()
 		{
-			var data = Import();
-			var toReturn = data.Last().Id;
-			return toReturn;
+			try
+			{
+				var data = Import();
+				var toReturn = data.Last().Id;
+				return toReturn;
+			}
 
+			catch (Exception)
+			{
+				return -1;
+			}
 		}
 
 		public int GetNextId()
